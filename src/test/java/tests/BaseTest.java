@@ -14,13 +14,18 @@ public class BaseTest {
     public void setUp() {
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-quic");
+
+        // Required for GitHub Actions / Linux CI
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
 
         driver = new ChromeDriver(options);
 
-        driver.manage().window().maximize();
-
         driver.get("https://www.saucedemo.com/");
+    }
     }
 
     @AfterMethod
