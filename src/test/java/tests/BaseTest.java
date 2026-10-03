@@ -15,7 +15,6 @@ public class BaseTest {
 
         ChromeOptions options = new ChromeOptions();
 
-        // Required for GitHub Actions / Linux CI
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
@@ -25,7 +24,6 @@ public class BaseTest {
         driver = new ChromeDriver(options);
 
         driver.get("https://www.saucedemo.com/");
-    }
     }
 
     @AfterMethod
